@@ -1,0 +1,4 @@
+Downloaded and installed JSON account credentials from Google Cloud Projects (GCP).
+
+$env:GOOGLE_APPLICATION_CREDENTIALS="[PATH]"
+    $env:GOOGLE_APPLICATION_CREDENTIALS="C:\Users\nielj\Documents\GitHub\TDShopInfo\My First Project-185172409a6d.json"

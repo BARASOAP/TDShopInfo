@@ -1,2 +1,2 @@
 # Division Shop Info 
-We hvae the technology
+We have the technology
