@@ -2,3 +2,6 @@ Downloaded and installed JSON account credentials from Google Cloud Projects (GC
 
 $env:GOOGLE_APPLICATION_CREDENTIALS="[PATH]"
     $env:GOOGLE_APPLICATION_CREDENTIALS="C:\Users\nielj\Documents\GitHub\TDShopInfo\My First Project-185172409a6d.json"
+
+Sentdex has a great video of him trying to get the sendkeys to work for his bot.
+    https://www.youtube.com/watch?v=tWqbl9IUdCg
