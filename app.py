@@ -16,15 +16,19 @@ class ScreenShot:
     """Class to hold a screenshot"""
 
     def __init__(self):
-        self.im=ImageGrab.grab()
+        self.im=ImageGrab.grab(bbox=(1720,460,2040,525))
         self.buffer = io.BytesIO()
         self.im.save(self.buffer, 'PNG')
+        self.im.show()
         self.buffer.seek(0)
         self.image = types.Image(content=self.buffer.getvalue())
         self.response = client.text_detection(image=self.image)
         self.texts = self.response.text_annotations
 
-    def print_labels(self):
+    def get_labels(self):
+        return self.texts[0].description.splitlines()[0]
+
+    def print_bounding_boxes(self):
         for text in self.texts:
             print(text.description)
 
@@ -49,21 +53,8 @@ class KeyBoard:
         time.sleep(self.time)
         directkeys.ReleaseKey(dx_scan_code)
 
-# ss1 = ScreenShot('1.jpg')
-# ss1.print_labels()
-
-# kb = KeyBoard()
-# print("3")
-# time.sleep(1)
-# print("2")
-# time.sleep(1)
-# print("1")
-# time.sleep(1)
-# kb.tap("S")
-
 if __name__ == "__main__":
     kb = KeyBoard()
-
     print("3")
     time.sleep(1)
     print("2")
@@ -72,10 +63,10 @@ if __name__ == "__main__":
     time.sleep(1)
 
     ss1 = ScreenShot()
-    ss1.print_labels()
+    print(ss1.get_labels())
     kb.tap('s')
     ss2 = ScreenShot()
-    ss2.print_labels()
+    print(ss2.get_labels())
     kb.tap('s')
     ss3 = ScreenShot()
-    ss3.print_labels()
+    print(ss3.get_labels())

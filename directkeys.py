@@ -8,7 +8,6 @@ import time
 
 SendInput = ctypes.windll.user32.SendInput
 
-
 W = 0x11
 A = 0x1E
 S = 0x1F
@@ -66,3 +65,4 @@ if __name__ == '__main__':
     time.sleep(1)
     ReleaseKey(0x11)
     time.sleep(1)
+
