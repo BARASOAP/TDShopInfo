@@ -5,3 +5,13 @@ $env:GOOGLE_APPLICATION_CREDENTIALS="[PATH]"
 
 Sentdex has a great video of him trying to get the sendkeys to work for his bot.
     https://www.youtube.com/watch?v=tWqbl9IUdCg
+
+Had to do a bunch of library pip installs
+    import numpy as np
+        pip install numpy
+    from PIL import ImageGrab
+        this is now a library called Pillow (wtf)
+        pip install Pillow
+    import cv2
+        this is a package called opencv
+        pip install opencv

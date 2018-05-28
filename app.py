@@ -3,6 +3,8 @@ import os
 import directkeys
 import time
 
+import pyscreenshot as ImageGrab
+
 # Imports the Google Cloud client library
 from google.cloud import vision
 from google.cloud.vision import types
@@ -13,16 +15,12 @@ client = vision.ImageAnnotatorClient()
 class ScreenShot:
     """Class to hold a screenshot"""
 
-    def __init__(self, file):
-        self.file_name = os.path.join(
-            os.path.dirname(__file__),
-            file)
-        
-        with io.open(self.file_name, 'rb') as image_file:
-            self.content = image_file.read()
-
-        self.image = types.Image(content=self.content)
-
+    def __init__(self):
+        self.im=ImageGrab.grab()
+        self.buffer = io.BytesIO()
+        self.im.save(self.buffer, 'PNG')
+        self.buffer.seek(0)
+        self.image = types.Image(content=self.buffer.getvalue())
         self.response = client.text_detection(image=self.image)
         self.texts = self.response.text_annotations
 
@@ -50,14 +48,34 @@ class KeyBoard:
         directkeys.PressKey(dx_scan_code)
         time.sleep(self.time)
         directkeys.ReleaseKey(dx_scan_code)
+
 # ss1 = ScreenShot('1.jpg')
 # ss1.print_labels()
 
-kb = KeyBoard()
-print("3")
-time.sleep(1)
-print("2")
-time.sleep(1)
-print("1")
-time.sleep(1)
-kb.tap("S")
+# kb = KeyBoard()
+# print("3")
+# time.sleep(1)
+# print("2")
+# time.sleep(1)
+# print("1")
+# time.sleep(1)
+# kb.tap("S")
+
+if __name__ == "__main__":
+    kb = KeyBoard()
+
+    print("3")
+    time.sleep(1)
+    print("2")
+    time.sleep(1)
+    print("1")
+    time.sleep(1)
+
+    ss1 = ScreenShot()
+    ss1.print_labels()
+    kb.tap('s')
+    ss2 = ScreenShot()
+    ss2.print_labels()
+    kb.tap('s')
+    ss3 = ScreenShot()
+    ss3.print_labels()
